@@ -14,9 +14,23 @@ public class GrootApplication {
 		SpringApplication.run(GrootApplication.class, args);
 	}
 
-	@RequestMapping("/hello")
-	public String hello(@RequestParam(value = "heartbeat", defaultValue = "World") String heartbeat) {
-		return String.format("Hello, your heartbeat is %s!", heartbeat);
+	@RequestMapping("/song")
+	public String heartbeat(@RequestParam(value = "heartbeat", defaultValue = "60") int heartBeat) {
+		String song = "";
+
+		if (heartBeat < 60) {
+			song = "Remember Me by Umi";
+		} else if ( heartBeat < 70) {
+			song = "While We're young by Jhene Aiko";
+		} else if (heartBeat < 80) {
+			song = "Going Bad by Meek Mill feat Drake";
+		} else if (heartBeat < 90) {
+			song = "Never Recover by Lil Baby, Gunna, Drake";
+		} else if (heartBeat < 100) {
+			song = "Dreams and Nightmares by Meek Mill";
+		}
+
+		return String.format("Hello, your song is %s!", song);
 	}
 
 }
